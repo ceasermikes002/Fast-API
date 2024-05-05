@@ -46,4 +46,8 @@ def create_student(student_id : int , student : Student):
 
 @app.put('/update-student/{student_id}')
 def update_students(student_id:int, student:UpdateStudent):
+    if student_id not in students:
+        return{"Error: Student does not exist"}
     
+    students[student_id] = student
+    return students[student_id]
